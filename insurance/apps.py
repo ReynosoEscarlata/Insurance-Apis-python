@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class InsurenceConfig(AppConfig):
+class InsuranceConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'insurence'
+    name = 'insurance'
