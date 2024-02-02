@@ -25,7 +25,8 @@ class RegisterUser(APIView):
             user = User.objects.create_user(data.get("email"), data.get("email"), data.get("password"))
             user.save()
             if user:
-                log("RegisterUser","POST",2,"User created, user: {user}")
+                context={"message":"User has been created"}
+                log("RegisterUser","POST",2,f"User created, user: {user}")
                 log("RegisterUser","POST",2,"Add user to group")
                 group = Group.objects.get(name=data.get("role"))
                 if group:
@@ -37,11 +38,10 @@ class RegisterUser(APIView):
 
             return Response(context, status=status.HTTP_201_CREATED)
         except Exception as error:
-            log("RegisterUser","POST",4,"Occurs an error: {error}")
-
+            context={"message":"Occurs an error trying to create the user"}
+            log("RegisterUser","POST",4,f"Occurs an error: {error}")
             return Response(context, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
-
 class LoginUser(APIView):
 
     def get(self,request):

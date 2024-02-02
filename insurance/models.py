@@ -14,7 +14,7 @@ class Vehicle(models.Model):
 class Driver(models.Model):
     name = models.CharField(max_length=50, null=False)
     last_name = models.CharField(max_length=50, null=False)
-    email = models.TextField(max_length=50, null=False)
+    email = models.EmailField(max_length=50, null=False)
     address = models.TextField(max_length=100, null=False)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.SET_NULL, null=True)
     class Meta:
