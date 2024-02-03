@@ -121,7 +121,6 @@ class InsuranceApplyView(APIView):
         try:
             context={}
             log("InsuranceApplyView","GET",2,"Start GET method to get applications")
-            print(request.user.group)
             Insurance_application = InsuranceApplication.objects.all().values()
             context = {
                 "Insurance_application":Insurance_application
